@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tâches - INTAJ V2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saham: {
+                            red: '#e2001a',
+                            dark: '#2d3239',
+                            light: '#f4f6f9',
+                            gray: '#e0e0e0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .sidebar-link:hover {
+            background-color: rgba(226, 0, 26, 0.05);
+            border-left: 4px solid #e2001a;
+        }
+
+        .sidebar-link {
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+
+<body class="text-saham-dark">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar (Dark, Icon Only) -->
+        <aside class="w-20 bg-saham-dark flex flex-col items-center py-6 shadow-lg fixed h-full z-20">
+            <!-- Logo Icon -->
+            <div class="mb-8 w-10 h-10 bg-white rounded-full flex items-center justify-center p-1">
+                <img src="favicon-1.png" alt="Logo" class="w-8">
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 w-full space-y-4">
+                <a href="index.html"
+                    class="w-full h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Accueil</span>
+                </a>
+
+                <a href="fiche-360.html"
+                    class="w-full h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Clients</span>
+                </a>
+
+                <a href="index.html"
+                    class="w-full h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Performances</span>
+                </a>
+
+                <a href="taches.html"
+                    class="w-full h-12 flex items-center justify-center text-white bg-saham-red border-l-4 border-white relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Tâches</span>
+                </a>
+
+                <a href="agenda.html"
+                    class="w-full h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Agenda</span>
+                </a>
+            </nav>
+
+            <!-- Bottom Actions -->
+            <div class="w-full space-y-4 mb-4">
+                <a href="#"
+                    class="w-full h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Paramètres</span>
+                </a>
+                <a href="#"
+                    class="w-full h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 relative group">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute left-16 bg-saham-dark text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">Déconnexion</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col ml-20 transition-all duration-300">
+            <!-- Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 sticky top-0 z-10">
+                <h1 class="text-xl font-bold text-saham-dark">Mes Tâches</h1>
+
+                <div class="flex items-center space-x-6">
+                    <!-- Search Bar -->
+                    <div class="relative">
+                        <input type="text" placeholder="Rechercher..."
+                            class="pl-10 pr-4 py-2 rounded-full bg-gray-100 border-none focus:ring-2 focus:ring-saham-red w-64 text-sm">
+                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-3 border-l pl-6 border-gray-200">
+                        <div class="text-right hidden md:block">
+                            <p class="text-sm font-bold text-gray-700">Mohammed BENSOLTANA</p>
+                            <p class="text-xs text-gray-500">Conseiller Clientèle</p>
+                        </div>
+                        <div
+                            class="h-10 w-10 rounded-full bg-saham-red text-white flex items-center justify-center font-bold text-lg shadow-md">
+                            MB
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-saham-light p-6">
+                <!-- Main Content -->
+                <div id="main-content">
+                    <!-- Advanced Filters -->
+                    <div class="bg-white rounded-xl shadow-sm p-4 mb-6 border border-gray-100">
+                        <div class="flex flex-col space-y-4">
+                            <!-- Top Row: Search & Quick Actions -->
+                            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                                <h2 class="text-lg font-bold text-saham-dark flex items-center">
+                                    <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z">
+                                        </path>
+                                    </svg>
+                                    Filtres Avancés
+                                </h2>
+                                <div class="flex space-x-2 w-full md:w-auto">
+                                    <button
+                                        class="flex-1 md:flex-none px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Réinitialiser</button>
+                                    <button
+                                        class="flex-1 md:flex-none px-4 py-2 bg-saham-dark text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors shadow-sm">Appliquer</button>
+                                </div>
+                            </div>
+
+                            <!-- Filter Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                                <!-- Nature -->
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Nature</label>
+                                    <select
+                                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-saham-red text-gray-700">
+                                        <option>Toutes</option>
+                                        <option>Crédit</option>
+                                        <option>Épargne</option>
+                                        <option>Assurance</option>
+                                        <option>Conformité</option>
+                                        <option>Monétique</option>
+                                    </select>
+                                </div>
+                                <!-- Segment -->
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Segment</label>
+                                    <div class="relative">
+                                        <select
+                                            class="w-full appearance-none bg-white border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-saham-red text-sm font-medium">
+                                            <option>Segment</option>
+                                            <option>Haut de Gamme</option>
+                                            <option>Bonne Gamme</option>
+                                            <option>Grand Public</option>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Marché -->
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Marché</label>
+                                    <select
+                                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-saham-red text-gray-700">
+                                        <option>Tous</option>
+                                        <option>Grand Public</option>
+                                        <option>Affaires</option>
+                                        <option>Corporate</option>
+                                    </select>
+                                </div>
+                                <!-- Priorité -->
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Priorité</label>
+                                    <select
+                                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-saham-red text-gray-700">
+                                        <option>Toutes</option>
+                                        <option>Haute</option>
+                                        <option>Moyenne</option>
+                                        <option>Basse</option>
+                                        <option>Critique</option>
+                                    </select>
+                                </div>
+                                <!-- Statut -->
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Statut</label>
+                                    <select
+                                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-saham-red text-gray-700">
+                                        <option>Tous</option>
+                                        <option>En cours</option>
+                                        <option>À faire</option>
+                                        <option>En retard</option>
+                                        <option>Terminée</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task Groups List -->
+                    <div class="space-y-4" id="taskGroupsList">
+
+                        <!-- Task Group 1: Crédit Immo (Particulier) -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group/item">
+                            <div class="p-6 cursor-pointer hover:bg-gray-50 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                                onclick="toggleAccordion('task-group-1')">
+                                <div class="flex items-center space-x-4 w-full md:w-1/3">
+                                    <div
+                                        class="h-12 w-12 rounded-full bg-red-50 text-saham-red flex items-center justify-center font-bold text-lg shrink-0">
+                                        BE</div>
+                                    <div class="min-w-0">
+                                        <h3
+                                            class="text-lg font-bold text-saham-dark group-hover/item:text-saham-red transition-colors truncate">
+                                            BELAALIM ELARABY</h3>
+                                        <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-0.5 rounded">Grand Public</span>
+                                            <span>•</span>
+                                            <span class="truncate">Dossier Crédit Immo</span>
+                                        </div>
+                                        <!-- Sub-task Preview -->
+                                        <p class="text-xs text-gray-400 mt-1 truncate flex items-center">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                                </path>
+                                            </svg>
+                                            3 tâches : Relevés bancaires, Simulation, Assurance...
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-4 md:gap-8 w-full md:w-auto justify-end">
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Priorité</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-red-100 text-red-600 rounded text-[10px] font-bold mt-0.5">Haute</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] text-gray-400 uppercase font-bold">Statut</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-blue-50 text-blue-600 rounded text-[10px] font-bold mt-0.5">En
+                                            cours</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Échéance</span>
+                                        <span class="block text-sm font-bold text-gray-700">05/12/2025</span>
+                                    </div>
+                                    <svg id="icon-task-group-1"
+                                        class="w-6 h-6 text-gray-400 transform transition-transform duration-200"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div id="task-group-1" class="hidden border-t border-gray-100 bg-gray-50">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h4 class="text-sm font-bold text-gray-700 uppercase">Détail des tâches (3)</h4>
+                                        <button onclick="openRdvModal('BELAALIM ELARABY', 'BJ165081')"
+                                            class="flex items-center px-4 py-2 bg-saham-red text-white rounded-full text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                            Planifier RDV
+                                        </button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <div>
+                                                    <p class="text-sm font-bold text-gray-700">Récupérer les derniers
+                                                        relevés bancaires (3 mois)</p>
+                                                    <p class="text-xs text-gray-500">Nécessaire pour l'analyse de risque
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded">À
+                                                faire</span>
+                                        </div>
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <div>
+                                                    <p class="text-sm font-bold text-gray-700">Valider la simulation de
+                                                        crédit</p>
+                                                    <p class="text-xs text-gray-500">Taux préférentiel 4.5%</p>
+                                                </div>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-blue-500 bg-blue-50 px-2 py-1 rounded">En
+                                                cours</span>
+                                        </div>
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between opacity-75">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox" checked
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-500 line-through">Vérifier
+                                                    l'éligibilité assurance emprunteur</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">Fait</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Group 2: Compte Entreprise (Entreprise) -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group/item">
+                            <div class="p-6 cursor-pointer hover:bg-gray-50 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                                onclick="toggleAccordion('task-group-2')">
+                                <div class="flex items-center space-x-4 w-full md:w-1/3">
+                                    <div
+                                        class="h-12 w-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg shrink-0">
+                                        KA</div>
+                                    <div class="min-w-0">
+                                        <h3
+                                            class="text-lg font-bold text-saham-dark group-hover/item:text-saham-red transition-colors truncate">
+                                            KARIMI AMINE</h3>
+                                        <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-0.5 rounded">Bonne Gamme</span>
+                                            <span>•</span>
+                                            <span class="truncate">Ouverture Compte Sté</span>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-1 truncate flex items-center">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                                </path>
+                                            </svg>
+                                            2 tâches : Statuts, Spécimens signatures
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-4 md:gap-8 w-full md:w-auto justify-end">
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Priorité</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-orange-100 text-orange-600 rounded text-[10px] font-bold mt-0.5">Moyenne</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] text-gray-400 uppercase font-bold">Statut</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-[10px] font-bold mt-0.5">En
+                                            attente</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Échéance</span>
+                                        <span class="block text-sm font-bold text-gray-700">08/12/2025</span>
+                                    </div>
+                                    <svg id="icon-task-group-2"
+                                        class="w-6 h-6 text-gray-400 transform transition-transform duration-200"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div id="task-group-2" class="hidden border-t border-gray-100 bg-gray-50">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h4 class="text-sm font-bold text-gray-700 uppercase">Détail des tâches (2)</h4>
+                                        <button onclick="openRdvModal('KARIMI AMINE', 'KA99283')"
+                                            class="flex items-center px-4 py-2 bg-saham-red text-white rounded-full text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">Planifier
+                                            RDV</button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-700">Collecter les statuts de
+                                                    la
+                                                    société</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">À
+                                                faire</span>
+                                        </div>
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-700">Signer les cartons de
+                                                    spécimens de signatures</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">À
+                                                faire</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Group 3: Facilité de Caisse (Corporate) -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group/item">
+                            <div class="p-6 cursor-pointer hover:bg-gray-50 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                                onclick="toggleAccordion('task-group-3')">
+                                <div class="flex items-center space-x-4 w-full md:w-1/3">
+                                    <div
+                                        class="h-12 w-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-lg shrink-0">
+                                        ST</div>
+                                    <div class="min-w-0">
+                                        <h3
+                                            class="text-lg font-bold text-saham-dark group-hover/item:text-saham-red transition-colors truncate">
+                                            SOCIÉTÉ TECH MAROC</h3>
+                                        <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-0.5 rounded">Haut de Gamme</span>
+                                            <span>•</span>
+                                            <span class="truncate">Renouvellement Ligne Crédit</span>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-1 truncate flex items-center">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                                </path>
+                                            </svg>
+                                            4 tâches : Bilans, PV Assemblée, Caution...
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-4 md:gap-8 w-full md:w-auto justify-end">
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Priorité</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-purple-100 text-purple-600 rounded text-[10px] font-bold mt-0.5">Critique</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] text-gray-400 uppercase font-bold">Statut</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-red-50 text-red-600 rounded text-[10px] font-bold mt-0.5">Urgent</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Échéance</span>
+                                        <span class="block text-sm font-bold text-red-600">01/12/2025</span>
+                                    </div>
+                                    <svg id="icon-task-group-3"
+                                        class="w-6 h-6 text-gray-400 transform transition-transform duration-200"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div id="task-group-3" class="hidden border-t border-gray-100 bg-gray-50">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h4 class="text-sm font-bold text-gray-700 uppercase">Détail des tâches (4)</h4>
+                                        <button onclick="openRdvModal('SOCIÉTÉ TECH MAROC', 'CO88271')"
+                                            class="flex items-center px-4 py-2 bg-saham-red text-white rounded-full text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">Planifier
+                                            RDV</button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-700">Récupérer Bilans N-1 et
+                                                    N-2</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-red-500 bg-red-50 px-2 py-1 rounded">Urgent</span>
+                                        </div>
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-700">PV Assemblée Générale
+                                                    autorisant le crédit</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded">À
+                                                faire</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Group 4: Assurance Vie (VIP) -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group/item">
+                            <div class="p-6 cursor-pointer hover:bg-gray-50 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                                onclick="toggleAccordion('task-group-4')">
+                                <div class="flex items-center space-x-4 w-full md:w-1/3">
+                                    <div
+                                        class="h-12 w-12 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center font-bold text-lg shrink-0">
+                                        NB</div>
+                                    <div class="min-w-0">
+                                        <h3
+                                            class="text-lg font-bold text-saham-dark group-hover/item:text-saham-red transition-colors truncate">
+                                            NADIA BENNANI</h3>
+                                        <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-0.5 rounded">Haut de Gamme</span>
+                                            <span>•</span>
+                                            <span class="truncate">Placement Assurance Vie</span>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-1 truncate flex items-center">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                                </path>
+                                            </svg>
+                                            1 tâche : Signature contrat
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-4 md:gap-8 w-full md:w-auto justify-end">
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Priorité</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-green-100 text-green-600 rounded text-[10px] font-bold mt-0.5">Basse</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] text-gray-400 uppercase font-bold">Statut</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-orange-50 text-orange-600 rounded text-[10px] font-bold mt-0.5">À
+                                            faire</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Échéance</span>
+                                        <span class="block text-sm font-bold text-gray-700">15/12/2025</span>
+                                    </div>
+                                    <svg id="icon-task-group-4"
+                                        class="w-6 h-6 text-gray-400 transform transition-transform duration-200"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div id="task-group-4" class="hidden border-t border-gray-100 bg-gray-50">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h4 class="text-sm font-bold text-gray-700 uppercase">Détail des tâches (1)</h4>
+                                        <button onclick="openRdvModal('NADIA BENNANI', 'NB12345')"
+                                            class="flex items-center px-4 py-2 bg-saham-red text-white rounded-full text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">Planifier
+                                            RDV</button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-700">Faire signer le bulletin
+                                                    de
+                                                    souscription</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded">À
+                                                faire</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Group 5: Réclamation (PRO) -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group/item">
+                            <div class="p-6 cursor-pointer hover:bg-gray-50 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                                onclick="toggleAccordion('task-group-5')">
+                                <div class="flex items-center space-x-4 w-full md:w-1/3">
+                                    <div
+                                        class="h-12 w-12 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center font-bold text-lg shrink-0">
+                                        YA</div>
+                                    <div class="min-w-0">
+                                        <h3
+                                            class="text-lg font-bold text-saham-dark group-hover/item:text-saham-red transition-colors truncate">
+                                            YOUSSEF ALAMI</h3>
+                                        <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-0.5 rounded">Bonne Gamme</span>
+                                            <span>•</span>
+                                            <span class="truncate">Installation TPE</span>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-1 truncate flex items-center">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                                </path>
+                                            </svg>
+                                            2 tâches : Vérification flux, Réponse client
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-4 md:gap-8 w-full md:w-auto justify-end">
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Priorité</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-orange-100 text-orange-600 rounded text-[10px] font-bold mt-0.5">Moyenne</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] text-gray-400 uppercase font-bold">Statut</span>
+                                        <span
+                                            class="inline-block px-2 py-1 bg-blue-50 text-blue-600 rounded text-[10px] font-bold mt-0.5">En
+                                            cours</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="block text-[10px] text-gray-400 uppercase font-bold">Échéance</span>
+                                        <span class="block text-sm font-bold text-gray-700">03/12/2025</span>
+                                    </div>
+                                    <svg id="icon-task-group-5"
+                                        class="w-6 h-6 text-gray-400 transform transition-transform duration-200"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div id="task-group-5" class="hidden border-t border-gray-100 bg-gray-50">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h4 class="text-sm font-bold text-gray-700 uppercase">Détail des tâches (2)</h4>
+                                        <button onclick="openRdvModal('YOUSSEF ALAMI', 'YA55921')"
+                                            class="flex items-center px-4 py-2 bg-saham-red text-white rounded-full text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">Planifier
+                                            RDV</button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div
+                                            class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between hover:shadow-sm transition-shadow">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox"
+                                                    class="h-4 w-4 text-saham-red focus:ring-saham-red border-gray-300 rounded">
+                                                <span class="text-sm font-medium text-gray-700">Vérifier les flux
+                                                    monétiques
+                                                    du 25/11</span>
+                                            </div>
+                                            <span
+                                                class="text-xs font-medium text-blue-500 bg-blue-50 px-2 py-1 rounded">En
+                                                cours</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+
+        <!-- Appointment Modal (Reused) -->
+        <div id="rdvModal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
+            aria-modal="true">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" id="modalBackdrop"></div>
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div
+                        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 text-center">
+                            <h3 class="text-xl font-bold leading-6 text-saham-red uppercase tracking-wider"
+                                id="modal-title">Création du Rendez-vous</h3>
+                            <p class="text-xs text-gray-500 mt-1">Veuillez remplir les champs pour créer un rendez-vous
+                            </p>
+                            <div class="w-16 h-1 bg-saham-red mx-auto mt-2 rounded-full"></div>
+                        </div>
+                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6">
+                            <div class="flex flex-col lg:flex-row gap-8">
+                                <!-- Form Fields (Simplified for brevity, matching fiche-360 structure) -->
+                                <div class="flex-1 space-y-4">
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="col-span-2">
+                                            <label
+                                                class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Objet
+                                                <span class="text-red-500">*</span></label>
+                                            <input type="text" placeholder="OBJET"
+                                                class="w-full rounded-full bg-gray-50 border-none py-2 px-4 text-sm font-bold text-saham-dark focus:ring-2 focus:ring-saham-red placeholder-gray-400">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Type
+                                                <span class="text-red-500">*</span></label>
+                                            <select
+                                                class="w-full rounded-full bg-gray-50 border-none py-2 px-4 text-sm font-bold text-saham-dark focus:ring-2 focus:ring-saham-red">
+                                                <option>Agence</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div>
+                                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Code
+                                                Client</label>
+                                            <input type="text" id="modalClientCode"
+                                                class="w-full rounded-full bg-gray-50 border-none py-2 px-4 text-sm font-bold text-saham-dark"
+                                                readonly>
+                                        </div>
+                                        <div class="col-span-2">
+                                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Nom
+                                                Client</label>
+                                            <input type="text" id="modalClientName"
+                                                class="w-full rounded-full bg-gray-50 border-none py-2 px-4 text-sm font-bold text-saham-dark"
+                                                readonly>
+                                        </div>
+                                    </div>
+                                    <!-- ... other fields ... -->
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label
+                                                class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Téléphone</label>
+                                            <input type="text" value="0661234567"
+                                                class="w-full rounded-full bg-gray-50 border-none py-2 px-4 text-sm font-bold text-saham-dark">
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Agence</label>
+                                            <select
+                                                class="w-full rounded-full bg-gray-50 border-none py-2 px-4 text-sm font-bold text-saham-dark">
+                                                <option>AGENCE PRINCIPALE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Calendar (Visual Only) -->
+                                <div class="w-full lg:w-80 flex flex-col">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-sm font-bold text-saham-dark uppercase">DÉCEMBRE 2025</h4>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-7 gap-1 text-center text-sm font-bold text-saham-dark mb-6">
+                                        <!-- Simplified Calendar Grid -->
+                                        <div class="py-1 text-gray-300">1</div>
+                                        <div class="py-1">2</div>
+                                        <div class="py-1">3</div>
+                                        <div class="py-1 bg-red-50 text-saham-red rounded-full">4</div>
+                                        <div class="py-1">5</div>
+                                        <div class="py-1">6</div>
+                                        <div class="py-1">7</div>
+                                        <div class="py-1">8</div>
+                                        <div class="py-1">9</div>
+                                        <div class="py-1">10</div>
+                                        <div class="py-1">11</div>
+                                        <div class="py-1">12</div>
+                                        <div class="py-1">13</div>
+                                        <div class="py-1">14</div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label
+                                                class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Heure
+                                                début</label>
+                                            <select
+                                                class="w-full rounded bg-gray-200 border-none py-2 px-4 text-sm font-bold text-saham-dark">
+                                                <option>09:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                            <button type="button"
+                                class="inline-flex w-full justify-center rounded-full bg-gray-300 px-8 py-2 text-sm font-bold text-white shadow-sm hover:bg-saham-red sm:ml-3 sm:w-auto transition-colors"
+                                onclick="closeRdvModal()">Créer</button>
+                            <button type="button"
+                                class="mt-3 inline-flex w-full justify-center rounded-full bg-white px-4 py-2 text-sm font-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                onclick="closeRdvModal()">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleAccordion(id) {
+                const element = document.getElementById(id);
+                const icon = document.getElementById('icon-' + id);
+
+                if (element.classList.contains('hidden')) {
+                    element.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    element.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+
+            const modal = document.getElementById('rdvModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const clientNameInput = document.getElementById('modalClientName');
+            const clientCodeInput = document.getElementById('modalClientCode');
+
+            function openRdvModal(clientName, clientCode) {
+                if (clientNameInput) clientNameInput.value = clientName;
+                if (clientCodeInput) clientCodeInput.value = clientCode;
+                modal.classList.remove('hidden');
+            }
+
+            function closeRdvModal() {
+                modal.classList.add('hidden');
+            }
+
+            backdrop.addEventListener('click', closeRdvModal);
+        </script>
+    </div>
+    <!-- Skeleton Loading Script -->
+    <script>
+        setTimeout(function () {
+            const skeleton = document.getElementById('skeleton-loader');
+            const content = document.getElementById('main-content');
+
+            if (skeleton && content) {
+                skeleton.classList.add('hidden-content');
+                content.classList.remove('hidden-content');
+            }
+        }, 1500);
+    </script>
+</body>
+
+</html>
