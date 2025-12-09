@@ -50,6 +50,27 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #aaa;
         }
+
+        /* Marquee Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -156,85 +177,131 @@
                     <!-- Column 1: Performance & Priorities -->
                     <div class="space-y-6">
 
-                        <!-- Mes Performances (Radar Chart) -->
-                        <div class="bg-white rounded-xl shadow-sm p-6">
-                            <!-- Header & Filters -->
-                            <div class="flex flex-col space-y-2 mb-4">
-                                <h2 class="text-lg font-bold text-saham-dark uppercase flex items-center">
-                                    <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
+                        <!-- Performances Row -->
+                        <div class="grid grid-cols-4 gap-4">
+                            <!-- Score Multi-Perf Block (1/4) -->
+                            <div
+                                class="col-span-1 bg-white rounded-xl shadow-sm p-4 flex flex-col justify-between items-center relative overflow-hidden text-center">
+                                <h2
+                                    class="text-sm font-bold text-saham-dark uppercase flex alignItems-center justify-center w-full mb-2">
+                                    <svg class="w-4 h-4 mr-1 text-saham-red" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                        </path>
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                     </svg>
-                                    Mes Performances
+                                    MON SCORE<br>MULTI-PERF
                                 </h2>
 
-                                <div class="flex items-center justify-between flex-wrap gap-2">
-                                    <!-- Left Group: Filters & Toggles -->
-                                    <div class="flex items-center space-x-2">
-                                        <!-- Date -->
-                                        <button
-                                            class="flex items-center px-2 py-1 bg-gray-50 border border-gray-200 rounded text-[10px] text-gray-600 whitespace-nowrap">
-                                            <svg class="w-3 h-3 mr-1 text-gray-400" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                                </path>
-                                            </svg>
-                                            2025-01-01 --> 2025-12-02
-                                        </button>
-
-                                        <!-- OCP/TRO -->
-                                        <button
-                                            class="flex items-center px-2 py-1 bg-gray-50 border border-gray-200 rounded text-[10px] text-gray-600 whitespace-nowrap">
-                                            <svg class="w-3 h-3 mr-1 text-gray-400" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
-                                                </path>
-                                            </svg>
-                                            OCP / TRO
-                                            <svg class="w-3 h-3 ml-1 text-gray-400" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </button>
-
-                                        <!-- Toggles (Compact) -->
-                                        <div class="flex items-center space-x-1 border-l pl-2 border-gray-200">
-                                            <div
-                                                class="flex items-center px-2 py-0.5 bg-white border border-gray-100 shadow-sm rounded border-l-2 border-saham-dark cursor-pointer hover:bg-gray-50">
-                                                <div class="w-1.5 h-1.5 rounded-full bg-saham-dark mr-1"></div>
-                                                <span class="text-[9px] font-bold text-saham-dark">GES</span>
-                                            </div>
-                                            <div
-                                                class="flex items-center px-2 py-0.5 bg-white border border-gray-100 shadow-sm rounded border-l-2 border-purple-800 cursor-pointer hover:bg-gray-50">
-                                                <div class="w-1.5 h-1.5 rounded-full bg-purple-800 mr-1"></div>
-                                                <span class="text-[9px] font-bold text-saham-dark">UC</span>
-                                            </div>
-                                            <div
-                                                class="flex items-center px-2 py-0.5 bg-white border border-gray-100 shadow-sm rounded border-l-2 border-saham-red cursor-pointer hover:bg-gray-50">
-                                                <div class="w-1.5 h-1.5 rounded-full bg-saham-red mr-1"></div>
-                                                <span class="text-[9px] font-bold text-saham-dark">DRPP</span>
-                                            </div>
-                                        </div>
+                                <div class="relative flex items-center justify-center my-4">
+                                    <!-- Animated Circle Background -->
+                                    <div class="w-24 h-24 rounded-full border-4 border-gray-100 absolute"></div>
+                                    <div
+                                        class="w-24 h-24 rounded-full border-4 border-saham-red border-t-transparent animate-spin absolute opacity-20">
                                     </div>
 
-                                    <!-- Right Tabs -->
-                                    <div class="flex items-center space-x-3 text-[10px] font-bold whitespace-nowrap">
-                                        <span
-                                            class="text-saham-red border-b-2 border-saham-red pb-0.5 cursor-pointer">PRI/PL</span>
-                                        <span class="text-gray-400 cursor-pointer hover:text-saham-dark">COMMERÇANTS /
-                                            TPE</span>
+                                    <!-- Counter -->
+                                    <span id="scoreCounter" class="text-5xl font-extrabold text-saham-dark">0</span>
+                                </div>
+
+                                <div class="flex flex-col items-center space-y-2">
+                                    <div
+                                        class="flex items-center text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                        </svg>
+                                        +5% vs S-1
                                     </div>
+                                    <p class="text-[10px] text-gray-400 font-medium leading-tight">Excellent
+                                        travail,<br>continuez ainsi !</p>
                                 </div>
                             </div>
 
-                            <div class="relative h-64 w-full flex justify-center">
-                                <canvas id="performanceChart"></canvas>
+                            <!-- Mes Performances (Radar Chart) (3/4) -->
+                            <div class="col-span-3 bg-white rounded-xl shadow-sm p-6">
+                                <!-- Header & Filters -->
+                                <div class="flex flex-col space-y-2 mb-4">
+                                    <h2 class="text-lg font-bold text-saham-dark uppercase flex items-center">
+                                        <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                            </path>
+                                        </svg>
+                                        Mes Performances
+                                    </h2>
+
+                                    <div class="flex items-center justify-between flex-wrap gap-2">
+                                        <!-- Left Group: Filters & Toggles -->
+                                        <div class="flex items-center space-x-2">
+                                            <!-- Date -->
+                                            <button
+                                                class="flex items-center px-2 py-1 bg-gray-50 border border-gray-200 rounded text-[10px] text-gray-600 whitespace-nowrap">
+                                                <svg class="w-3 h-3 mr-1 text-gray-400" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                    </path>
+                                                </svg>
+                                                2025-01-01 --> 2025-12-02
+                                            </button>
+
+                                            <!-- OCP/TRO -->
+                                            <button
+                                                class="flex items-center px-2 py-1 bg-gray-50 border border-gray-200 rounded text-[10px] text-gray-600 whitespace-nowrap">
+                                                <svg class="w-3 h-3 mr-1 text-gray-400" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                                    </path>
+                                                </svg>
+                                                OCP / TRO
+                                                <svg class="w-3 h-3 ml-1 text-gray-400" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </button>
+
+                                            <!-- Toggles (Compact) -->
+                                            <div class="flex items-center space-x-1 border-l pl-2 border-gray-200">
+                                                <div
+                                                    class="flex items-center px-2 py-0.5 bg-white border border-gray-100 shadow-sm rounded border-l-2 border-saham-dark cursor-pointer hover:bg-gray-50">
+                                                    <div class="w-1.5 h-1.5 rounded-full bg-saham-dark mr-1"></div>
+                                                    <span class="text-[9px] font-bold text-saham-dark">GES</span>
+                                                </div>
+                                                <div
+                                                    class="flex items-center px-2 py-0.5 bg-white border border-gray-100 shadow-sm rounded border-l-2 border-purple-800 cursor-pointer hover:bg-gray-50">
+                                                    <div class="w-1.5 h-1.5 rounded-full bg-purple-800 mr-1"></div>
+                                                    <span class="text-[9px] font-bold text-saham-dark">UC</span>
+                                                </div>
+                                                <div
+                                                    class="flex items-center px-2 py-0.5 bg-white border border-gray-100 shadow-sm rounded border-l-2 border-saham-red cursor-pointer hover:bg-gray-50">
+                                                    <div class="w-1.5 h-1.5 rounded-full bg-saham-red mr-1"></div>
+                                                    <span class="text-[9px] font-bold text-saham-dark">DRPP</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Right Tabs -->
+                                        <div
+                                            class="flex items-center space-x-3 text-[10px] font-bold whitespace-nowrap">
+                                            <span
+                                                class="text-saham-red border-b-2 border-saham-red pb-0.5 cursor-pointer">PRI/PL</span>
+                                            <span class="text-gray-400 cursor-pointer hover:text-saham-dark">COMMERÇANTS
+                                                /
+                                                TPE</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative h-64 w-full flex justify-center">
+                                    <canvas id="performanceChart"></canvas>
+                                </div>
                             </div>
+
                         </div>
 
                         <!-- Mes Priorités (Client List) -->
@@ -261,7 +328,8 @@
                                             NB</div>
                                         <div>
                                             <p class="text-sm font-bold text-saham-dark">Nadia BENNANI</p>
-                                            <p class="text-xs text-red-600 font-medium">Renouvellement DAT - Urgent</p>
+                                            <p class="text-xs text-red-600 font-medium">Renouvellement DAT - Urgent
+                                            </p>
                                         </div>
                                     </div>
                                     <div
@@ -286,6 +354,17 @@
                                                 </path>
                                             </svg>
                                         </button>
+                                        <a href="fiche-360.html"
+                                            class="p-1.5 bg-white text-saham-red rounded-full shadow-sm hover:bg-red-50"
+                                            title="Fiche 360">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                </path>
+                                            </svg>
+                                        </a>
                                         <button
                                             class="p-1.5 bg-white text-gray-400 rounded-full shadow-sm hover:text-saham-red hover:bg-red-50">
                                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -462,6 +541,97 @@
                             </div>
                         </div>
 
+                        <!-- Actualités BU Retail (Auto-Scroll) -->
+                        <div class="bg-white rounded-xl shadow-sm p-4 mt-6 overflow-hidden">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-lg font-bold text-saham-dark uppercase flex items-center">
+                                    <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                                        </path>
+                                    </svg>
+                                    ACTUALITÉS BU RETAIL
+                                </h2>
+                            </div>
+
+                            <!-- Scroll Container -->
+                            <div class="overflow-hidden w-full">
+                                <div class="animate-scroll space-x-4">
+                                    <!-- Original Items -->
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-saham-red pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span class="text-[9px] font-bold text-saham-red uppercase block mb-1">TEMPS
+                                            FORT</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Campagne
+                                            'Upgrade
+                                            Packs' : Objectif 100%</h3>
+                                    </div>
+
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-blue-600 pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span
+                                            class="text-[9px] font-bold text-blue-600 uppercase block mb-1">COMMERCIAL</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Campagne DAT :
+                                            Taux
+                                            préférentiels jusqu'au 31/12</h3>
+                                    </div>
+
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-green-600 pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span
+                                            class="text-[9px] font-bold text-green-600 uppercase block mb-1">PRODUIT</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Formations
+                                            'Assurance Vie' Disponibles</h3>
+                                    </div>
+
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-purple-600 pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span
+                                            class="text-[9px] font-bold text-purple-600 uppercase block mb-1">RH</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Défis
+                                            Commerciaux
+                                            Q4: Résultats</h3>
+                                    </div>
+
+                                    <!-- Duplicated Items for Seamless Loop -->
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-saham-red pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span class="text-[9px] font-bold text-saham-red uppercase block mb-1">TEMPS
+                                            FORT</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Campagne
+                                            'Upgrade
+                                            Packs' : Objectif 100%</h3>
+                                    </div>
+
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-blue-600 pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span
+                                            class="text-[9px] font-bold text-blue-600 uppercase block mb-1">COMMERCIAL</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Campagne DAT :
+                                            Taux
+                                            préférentiels jusqu'au 31/12</h3>
+                                    </div>
+
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-green-600 pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span
+                                            class="text-[9px] font-bold text-green-600 uppercase block mb-1">PRODUIT</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Formations
+                                            'Assurance Vie' Disponibles</h3>
+                                    </div>
+
+                                    <div
+                                        class="w-[200px] flex-shrink-0 bg-white border-l-4 border-purple-600 pl-3 py-1 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span
+                                            class="text-[9px] font-bold text-purple-600 uppercase block mb-1">RH</span>
+                                        <h3 class="text-xs font-bold text-saham-dark leading-tight">Défis
+                                            Commerciaux
+                                            Q4: Résultats</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Column 2: Alerts & Calendar -->
@@ -477,115 +647,163 @@
                                 </svg>
                                 MES ALERTES
                             </h2>
-                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                                <!-- Unfinished Tasks (New) -->
+                            <div class="flex items-center justify-between gap-4 p-2 overflow-x-auto scrollbar-hide">
+                                <!-- Taches (Linked to Taches) -->
                                 <a href="taches.html"
-                                    class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] p-2 flex flex-col items-center justify-center border border-gray-50 aspect-[4/5] hover:shadow-lg transition-shadow cursor-pointer group relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 p-1">
-                                        <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                                    </div>
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl font-bold mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                            </path>
-                                        </svg>
+                                    class="flex flex-col items-center group cursor-pointer min-w-[60px]">
+                                    <div class="relative transition-transform group-hover:scale-110">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-gray-500 flex items-center justify-center text-white shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="absolute -top-1.5 -right-1.5 bg-saham-red text-white text-[10px] font-bold px-1.5 h-5 min-w-[20px] flex items-center justify-center rounded-full border border-white shadow-sm">
+                                            3
+                                        </div>
                                     </div>
                                     <p
-                                        class="text-[9px] font-bold text-saham-dark uppercase text-center mb-1 leading-tight h-6 flex items-center">
-                                        MES TÂCHES</p>
-                                    <p class="text-lg font-bold text-orange-500 mb-0.5">8</p>
-                                    <p class="text-[8px] font-bold text-gray-400 uppercase">EN ATTENTE</p>
+                                        class="mt-2 text-[9px] font-bold text-gray-500 text-center uppercase tracking-wide">
+                                        Taches</p>
                                 </a>
+
                                 <!-- Digital Sales -->
                                 <div
-                                    class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] p-2 flex flex-col items-center justify-center border border-gray-50 aspect-[4/5] hover:shadow-lg transition-shadow cursor-pointer group">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-[#3e1b26] flex items-center justify-center text-white text-xl font-bold mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                        </svg>
+                                    class="flex flex-col items-center group cursor-pointer opacity-25 grayscale hover:opacity-100 hover:grayscale-0 transition-all min-w-[60px]">
+                                    <div class="relative transition-transform group-hover:scale-110">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-[#3e1b26] flex items-center justify-center text-white shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="absolute -top-1.5 -right-1.5 bg-saham-red text-white text-[10px] font-bold px-1.5 h-5 min-w-[20px] flex items-center justify-center rounded-full border border-white shadow-sm">
+                                            0
+                                        </div>
                                     </div>
                                     <p
-                                        class="text-[9px] font-bold text-saham-dark uppercase text-center mb-1 leading-tight h-6 flex items-center">
-                                        DIGITAL SALES</p>
-                                    <p class="text-lg font-bold text-orange-500 mb-0.5">0</p>
-                                    <p class="text-[8px] font-bold text-gray-400 uppercase">DOSSIERS</p>
+                                        class="mt-2 text-[9px] font-bold text-gray-500 text-center uppercase tracking-wide leading-tight">
+                                        Digital Sales</p>
                                 </div>
 
                                 <!-- Risque -->
-                                <div
-                                    class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] p-2 flex flex-col items-center justify-center border border-gray-50 aspect-[4/5] hover:shadow-lg transition-shadow cursor-pointer group">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white text-xl font-bold mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
-                                            </path>
-                                        </svg>
+                                <div class="flex flex-col items-center group cursor-pointer min-w-[60px]">
+                                    <div class="relative transition-transform group-hover:scale-110">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-black flex items-center justify-center text-white shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="absolute -top-1.5 -right-1.5 bg-saham-red text-white text-[10px] font-bold px-1.5 h-5 min-w-[20px] flex items-center justify-center rounded-full border border-white shadow-sm">
+                                            57
+                                        </div>
                                     </div>
                                     <p
-                                        class="text-[9px] font-bold text-saham-dark uppercase text-center mb-1 leading-tight h-6 flex items-center">
-                                        RISQUE</p>
-                                    <p class="text-lg font-bold text-orange-500 mb-0.5">57</p>
-                                    <p class="text-[8px] font-bold text-gray-400 uppercase">DOSSIERS</p>
+                                        class="mt-2 text-[9px] font-bold text-gray-500 text-center uppercase tracking-wide">
+                                        Risque</p>
                                 </div>
 
                                 <!-- Baisse des dépôts -->
                                 <div
-                                    class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] p-2 flex flex-col items-center justify-center border border-gray-50 aspect-[4/5] hover:shadow-lg transition-shadow cursor-pointer group">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-[#3b1b6f] flex items-center justify-center text-white text-xl font-bold mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-                                        </svg>
+                                    class="flex flex-col items-center group cursor-pointer opacity-25 grayscale hover:opacity-100 hover:grayscale-0 transition-all min-w-[60px]">
+                                    <div class="relative transition-transform group-hover:scale-110">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-[#3b1b6f] flex items-center justify-center text-white shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="absolute -top-1.5 -right-1.5 bg-saham-red text-white text-[10px] font-bold px-1.5 h-5 min-w-[20px] flex items-center justify-center rounded-full border border-white shadow-sm">
+                                            0
+                                        </div>
                                     </div>
                                     <p
-                                        class="text-[9px] font-bold text-saham-dark uppercase text-center mb-1 leading-tight h-6 flex items-center">
-                                        BAISSE DES DÉPÔTS</p>
-                                    <p class="text-lg font-bold text-orange-500 mb-0.5">0</p>
-                                    <p class="text-[8px] font-bold text-gray-400 uppercase">DOSSIERS</p>
+                                        class="mt-2 text-[9px] font-bold text-gray-500 text-center uppercase tracking-wide leading-tight">
+                                        Baisse Dépôts</p>
                                 </div>
 
-                                <!-- Conformité (Active) -->
-                                <div
-                                    class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] p-2 flex flex-col items-center justify-center border border-gray-50 aspect-[4/5] hover:shadow-lg transition-shadow cursor-pointer group">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-[#064e3b] flex items-center justify-center text-white text-xl font-bold mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
+                                <!-- Conformité -->
+                                <div class="flex flex-col items-center group cursor-pointer min-w-[60px]">
+                                    <div class="relative transition-transform group-hover:scale-110">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-[#064e3b] flex items-center justify-center text-white shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="absolute -top-1.5 -right-1.5 bg-saham-red text-white text-[10px] font-bold px-1.5 h-5 min-w-[20px] flex items-center justify-center rounded-full border border-white shadow-sm">
+                                            12
+                                        </div>
                                     </div>
                                     <p
-                                        class="text-[9px] font-bold text-saham-dark uppercase text-center mb-1 leading-tight h-6 flex items-center">
-                                        CONFORMITÉ</p>
-                                    <p class="text-lg font-bold text-orange-500 mb-0.5">12</p>
-                                    <p class="text-[8px] font-bold text-gray-400 uppercase">DOSSIERS</p>
+                                        class="mt-2 text-[9px] font-bold text-gray-500 text-center uppercase tracking-wide">
+                                        Conformité</p>
                                 </div>
 
-                                <!-- Réclamations (Active) -->
-                                <div
-                                    class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] p-2 flex flex-col items-center justify-center border border-gray-50 aspect-[4/5] hover:shadow-lg transition-shadow cursor-pointer group">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-[#7c2d12] flex items-center justify-center text-white text-xl font-bold mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
-                                            </path>
-                                        </svg>
+                                <!-- Réclamations -->
+                                <div class="flex flex-col items-center group cursor-pointer min-w-[60px]">
+                                    <div class="relative transition-transform group-hover:scale-110">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-[#7c2d12] flex items-center justify-center text-white shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="absolute -top-1.5 -right-1.5 bg-saham-red text-white text-[10px] font-bold px-1.5 h-5 min-w-[20px] flex items-center justify-center rounded-full border border-white shadow-sm">
+                                            3
+                                        </div>
                                     </div>
                                     <p
-                                        class="text-[9px] font-bold text-saham-dark uppercase text-center mb-1 leading-tight h-6 flex items-center">
-                                        RÉCLAMATIONS</p>
-                                    <p class="text-lg font-bold text-orange-500 mb-0.5">3</p>
-                                    <p class="text-[8px] font-bold text-gray-400 uppercase">DOSSIERS</p>
+                                        class="mt-2 text-[9px] font-bold text-gray-500 text-center uppercase tracking-wide">
+                                        Réclamations</p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Excelia Block -->
+                        <a href="https://www.excellia.ma/" target="_blank"
+                            class="bg-white rounded-xl shadow-sm p-4 flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow relative overflow-hidden group border border-gray-100 block">
+                            <!-- Background Pattern (Subtle) -->
+                            <div
+                                class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gray-50 rounded-full group-hover:scale-110 transition-transform z-0">
+                            </div>
+
+                            <div class="flex items-center z-10">
+                                <div class="w-12 h-12 flex items-center justify-center mr-4">
+                                    <img src="excellia.png" alt="Excelia" class="w-full h-full object-contain">
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg leading-tight text-saham-dark">MES FORMATIONS</h3>
+                                    <p class="text-xs text-gray-500 font-medium">Excellia, la plateforme de
+                                        Formation
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-center text-xs font-bold text-saham-dark bg-gray-100 px-3 py-1.5 rounded-full group-hover:bg-saham-red group-hover:text-white transition-colors z-10">
+                                ACCÉDER
+                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </a>
 
                         <!-- Mon Calendrier -->
                         <div class="bg-white rounded-xl shadow-sm p-4 flex-1 flex flex-col">
@@ -618,71 +836,103 @@
                             </div>
 
                             <!-- Horizontal Day Strip -->
-                            <div class="flex justify-between items-center mb-4 px-1 overflow-x-auto">
-                                <!-- Day Item -->
-                                <div class="flex flex-col items-center cursor-pointer group">
+                            <div
+                                class="flex justify-between items-center mb-4 px-1 overflow-x-auto scrollbar-hide day-strip space-x-2">
+                                <!-- Day Item 1 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Lun</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">1</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">1</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 2 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Mar</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">2</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">2</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 3 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Mer</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">3</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">3</span>
                                 </div>
-                                <!-- Selected Day -->
-                                <div class="flex flex-col items-center cursor-pointer">
-                                    <span class="text-[10px] font-bold text-saham-red mb-1">Jeu</span>
+                                <!-- Selected Day 4 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg active-day flex-shrink-0 min-w-[30px]">
+                                    <span class="text-[10px] font-bold text-saham-red mb-1 day-name">Jeu</span>
                                     <div
-                                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center shadow-sm border border-red-100">
-                                        <span class="text-sm font-bold text-saham-red">4</span>
+                                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center shadow-sm border border-red-100 day-circle transition-all">
+                                        <span class="text-sm font-bold text-saham-red day-number">4</span>
                                     </div>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 5 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Ven</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">5</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">5</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 6 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Sam</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">6</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">6</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
-                                    <span class="text-[10px] font-bold text-gray-500 mb-1">Dim</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">7</span>
+                                <!-- Day Item 7 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-100 hover:text-gray-400 transition-colors opacity-50 flex-shrink-0 min-w-[30px]">
+                                    <span class="text-[10px] font-bold text-gray-400 mb-1">Dim</span>
+                                    <span class="text-sm text-gray-400 font-bold">7</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 8 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Lun</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">8</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">8</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 9 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Mar</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">9</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">9</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 10 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Mer</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">10</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">10</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 11 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Jeu</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">11</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">11</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 12 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Ven</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">12</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">12</span>
                                 </div>
-                                <div class="flex flex-col items-center cursor-pointer group">
+                                <!-- Day Item 13 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors flex-shrink-0 min-w-[30px]">
                                     <span class="text-[10px] font-bold text-gray-500 mb-1">Sam</span>
-                                    <span class="text-sm text-gray-500 group-hover:text-saham-dark">13</span>
+                                    <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">13</span>
+                                </div>
+                                <!-- Day Item 14 -->
+                                <div onclick="selectDashboardDay(this)"
+                                    class="flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-100 hover:text-gray-400 transition-colors opacity-50 flex-shrink-0 min-w-[30px]">
+                                    <span class="text-[10px] font-bold text-gray-400 mb-1">Dim</span>
+                                    <span class="text-sm text-gray-400 font-bold">14</span>
                                 </div>
                             </div>
 
                             <!-- Appointment Cards -->
-                            <div class="space-y-2 overflow-y-auto flex-1 pr-1" style="max-height: 450px;">
+                            <div class="grid grid-cols-2 gap-2 overflow-y-auto pr-1" style="max-height: 450px;"
+                                id="dashboardRdvList">
                                 <!-- Appointment 1 -->
-                                <div
-                                    class="bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                                <a href="fiche-360.html"
+                                    class="block bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow group">
                                     <div class="flex">
                                         <!-- Timeline -->
                                         <div class="flex flex-col items-center mr-4 pt-1">
@@ -701,11 +951,15 @@
 
                                         <!-- Content -->
                                         <div class="flex-1">
-                                            <h3 class="text-xs font-black text-saham-dark uppercase mb-0.5">OPPORTUNITE
+                                            <h3
+                                                class="text-xs font-black text-saham-dark uppercase mb-0.5 group-hover:text-saham-red transition-colors">
+                                                OPPORTUNITE
                                                 PRELEVEMENT CONFRERE</h3>
-                                            <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">DOSSIER ATTARI
+                                            <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">DOSSIER
+                                                ATTARI
                                             </p>
-                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">RENDEZ-VOUS
+                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">
+                                                RENDEZ-VOUS
                                                 AGENCE</p>
 
                                             <div class="flex space-x-2">
@@ -716,11 +970,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
 
                                 <!-- Appointment 2 -->
-                                <div
-                                    class="bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                                <a href="fiche-360.html"
+                                    class="block bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow group">
                                     <div class="flex">
                                         <!-- Timeline -->
                                         <div class="flex flex-col items-center mr-4 pt-1">
@@ -739,11 +993,14 @@
 
                                         <!-- Content -->
                                         <div class="flex-1">
-                                            <h3 class="text-xs font-black text-saham-dark uppercase mb-0.5">RÉUNION
+                                            <h3
+                                                class="text-xs font-black text-saham-dark uppercase mb-0.5 group-hover:text-saham-red transition-colors">
+                                                RÉUNION
                                                 ÉQUIPE</h3>
                                             <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">POINT
                                                 HEBDOMADAIRE</p>
-                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">SALLE DE
+                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">SALLE
+                                                DE
                                                 RÉUNION 1</p>
 
                                             <div class="flex space-x-2">
@@ -753,11 +1010,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
 
                                 <!-- Appointment 3 -->
-                                <div
-                                    class="bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                                <a href="fiche-360.html"
+                                    class="block bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow group">
                                     <div class="flex">
                                         <!-- Timeline -->
                                         <div class="flex flex-col items-center mr-4 pt-1">
@@ -776,11 +1033,14 @@
 
                                         <!-- Content -->
                                         <div class="flex-1">
-                                            <h3 class="text-xs font-black text-saham-dark uppercase mb-0.5">YOUSSEF
+                                            <h3
+                                                class="text-xs font-black text-saham-dark uppercase mb-0.5 group-hover:text-saham-red transition-colors">
+                                                YOUSSEF
                                                 ALAMI</h3>
                                             <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">SIMULATION
                                                 CRÉDIT IMMO</p>
-                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">RENDEZ-VOUS
+                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">
+                                                RENDEZ-VOUS
                                                 AGENCE</p>
 
                                             <div class="flex space-x-2">
@@ -790,7 +1050,85 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
+
+                                <!-- Appointment 4 (Mock for scroll) -->
+                                <a href="fiche-360.html"
+                                    class="block bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow group">
+                                    <div class="flex">
+                                        <!-- Timeline -->
+                                        <div class="flex flex-col items-center mr-4 pt-1">
+                                            <div class="flex items-center mb-0.5">
+                                                <div class="w-1.5 h-1.5 rounded-full bg-purple-500 mr-1"></div>
+                                                <span class="text-[10px] font-bold text-saham-dark">17:00</span>
+                                            </div>
+                                            <div
+                                                class="w-px h-8 bg-gray-300 border-l border-dashed border-gray-400 my-0.5">
+                                            </div>
+                                            <div class="flex items-center mt-0.5">
+                                                <div class="w-1.5 h-1.5 rounded-full bg-purple-500 mr-1"></div>
+                                                <span class="text-[10px] font-bold text-gray-500">17:30</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Content -->
+                                        <div class="flex-1">
+                                            <h3
+                                                class="text-xs font-black text-saham-dark uppercase mb-0.5 group-hover:text-saham-red transition-colors">
+                                                SARAH BENKIRANE</h3>
+                                            <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">RETRAIT
+                                                CARTE
+                                            </p>
+                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">GUICHET
+                                            </p>
+
+                                            <div class="flex space-x-2">
+                                                <span
+                                                    class="px-2 py-0.5 bg-gray-100 text-gray-700 text-[9px] font-bold rounded-full uppercase">A
+                                                    VENIR</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Appointment 5 (Mock for scroll) -->
+                                <a href="fiche-360.html"
+                                    class="block bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow group">
+                                    <div class="flex">
+                                        <!-- Timeline -->
+                                        <div class="flex flex-col items-center mr-4 pt-1">
+                                            <div class="flex items-center mb-0.5">
+                                                <div class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1"></div>
+                                                <span class="text-[10px] font-bold text-saham-dark">17:45</span>
+                                            </div>
+                                            <div
+                                                class="w-px h-8 bg-gray-300 border-l border-dashed border-gray-400 my-0.5">
+                                            </div>
+                                            <div class="flex items-center mt-0.5">
+                                                <div class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1"></div>
+                                                <span class="text-[10px] font-bold text-gray-500">18:15</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Content -->
+                                        <div class="flex-1">
+                                            <h3
+                                                class="text-xs font-black text-saham-dark uppercase mb-0.5 group-hover:text-saham-red transition-colors">
+                                                KARIM TAZI</h3>
+                                            <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">DÉPÔT
+                                                CHÈQUE
+                                            </p>
+                                            <p class="text-[10px] font-black text-saham-dark uppercase mb-2">GUICHET
+                                            </p>
+
+                                            <div class="flex space-x-2">
+                                                <span
+                                                    class="px-2 py-0.5 bg-gray-100 text-gray-700 text-[9px] font-bold rounded-full uppercase">A
+                                                    VENIR</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
 
                         </div>
@@ -803,8 +1141,8 @@
             <!-- Dalil-IA Floating Button -->
             <div class="fixed bottom-6 right-6 z-50 group">
                 <button
-                    class="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform focus:outline-none">
-                    <img src="dalil-ia.png" alt="Dalil-IA" class="w-full h-full object-contain drop-shadow-lg">
+                    class="w-16 h-16 rounded-full overflow-hidden shadow-lg border-2 border-white flex items-center justify-center hover:scale-110 transition-transform focus:outline-none bg-white">
+                    <img src="dalil-ia.png" alt="Dalil-IA" class="w-full h-full object-cover">
                 </button>
                 <span
                     class="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-saham-dark text-white text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
@@ -813,10 +1151,62 @@
             </div>
         </div>
     </div>
+
     <script>
-        // Radar Chart Configuration
+        function selectDashboardDay(dayElement) {
+            // Find container
+            const container = dayElement.parentElement;
+
+            // Revert all to default state
+            const days = container.querySelectorAll('div[onclick]');
+            days.forEach(day => {
+                // Clear active styles
+                day.className = 'flex flex-col items-center cursor-pointer group p-1 rounded-lg hover:bg-gray-50 transition-colors';
+
+                // Reset text colors
+                const nameSpan = day.children[0];
+                const numberSpan = day.children[1];
+
+                nameSpan.className = 'text-[10px] font-bold text-gray-500 mb-1';
+
+                // If it was the selected circle, custom logic to revert
+                if (numberSpan.classList.contains('day-circle')) {
+                    // This was the active one, rebuild structure to simple text
+                    day.innerHTML = `
+                         <span class="text-[10px] font-bold text-gray-500 mb-1">${nameSpan.innerText}</span>
+                         <span class="text-sm text-gray-500 font-bold group-hover:text-saham-dark">${numberSpan.innerText}</span>
+                   `;
+                } else {
+                    // Was already simple, just ensure classes
+                    // (Already done by reset)
+                }
+            });
+
+            // Set styles for clicked
+            // We need to inject the Circle structure
+            const nameText = dayElement.querySelector('span:nth-child(1)').innerText;
+            const numberText = dayElement.querySelector('span:nth-child(2)').innerText;
+
+            dayElement.className = 'flex flex-col items-center cursor-pointer group p-1 rounded-lg active-day';
+
+            dayElement.innerHTML = `
+                <span class="text-[10px] font-bold text-saham-red mb-1 day-name">${nameText}</span>
+                <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center shadow-sm border border-red-100 day-circle transition-all">
+                    <span class="text-sm font-bold text-saham-red day-number">${numberText}</span>
+                </div>
+             `;
+
+            // Simulate Refresh
+            const list = document.getElementById('dashboardRdvList');
+            list.classList.add('opacity-50');
+            setTimeout(() => {
+                list.classList.remove('opacity-50');
+            }, 200);
+        }
+
+        // Radar Chart (Mock Data)
         const ctx = document.getElementById('performanceChart').getContext('2d');
-        const performanceChart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'radar',
             data: {
                 labels: [
@@ -874,6 +1264,26 @@
                     }
                 }
             }
+        });
+
+        // Score Multi-Perf Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const counterElement = document.getElementById('scoreCounter');
+            const targetScore = 89;
+            const duration = 2000; // 2 seconds
+            const interval = 20; // Update every 20ms
+            const steps = duration / interval;
+            const increment = targetScore / steps;
+            let currentScore = 0;
+
+            const timer = setInterval(() => {
+                currentScore += increment;
+                if (currentScore >= targetScore) {
+                    currentScore = targetScore;
+                    clearInterval(timer);
+                }
+                counterElement.textContent = Math.round(currentScore);
+            }, interval);
         });
     </script>
 </body>
