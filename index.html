@@ -306,7 +306,8 @@
                         </div>
 
                         <!-- Mes Priorités (Client List) -->
-                        <div class="bg-white rounded-xl shadow-sm p-6">
+                        <!-- Mes Priorités (Client List) -->
+                        <div id="prioritiesBlock" class="bg-white rounded-xl shadow-sm p-6 relative">
                             <div class="flex items-center justify-between mb-4">
                                 <h2 class="text-lg font-bold text-saham-dark uppercase flex items-center">
                                     <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
@@ -316,8 +317,20 @@
                                     </svg>
                                     Mes Priorités (Top 5)
                                 </h2>
-                                <a href="taches.html" class="text-xs text-saham-red font-semibold hover:underline">Voir
-                                    tout</a>
+                                <div class="flex items-center space-x-4">
+                                    <a href="#" onclick="refreshBlock('prioritiesBlock'); return false;"
+                                        class="text-xs text-gray-500 font-semibold hover:text-saham-red flex items-center group">
+                                        <svg class="w-3 h-3 mr-1 text-gray-400 group-hover:text-saham-red transition-colors"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                                            </path>
+                                        </svg>
+                                        Actualiser
+                                    </a>
+                                    <a href="taches.html"
+                                        class="text-xs text-saham-red font-semibold hover:underline">Voir tout</a>
+                                </div>
                             </div>
                             <div class="space-y-2">
                                 <!-- Client 1 -->
@@ -548,16 +561,28 @@
                     <!-- Column 2: Alerts & Calendar -->
                     <div class="space-y-6">
 
-                        <div class="bg-white rounded-xl shadow-sm p-6">
-                            <h2 class="text-lg font-bold text-saham-dark mb-6 uppercase flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                                    </path>
-                                </svg>
-                                MES ALERTES
-                            </h2>
+                        <div id="alertsBlock" class="bg-white rounded-xl shadow-sm p-6 relative">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-lg font-bold text-saham-dark uppercase flex items-center">
+                                    <svg class="w-5 h-5 mr-2 text-saham-red" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                        </path>
+                                    </svg>
+                                    MES ALERTES
+                                </h2>
+                                <a href="#" onclick="refreshBlock('alertsBlock'); return false;"
+                                    class="text-xs text-gray-500 font-semibold hover:text-saham-red flex items-center group">
+                                    <svg class="w-3 h-3 mr-1 text-gray-400 group-hover:text-saham-red transition-colors"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                                        </path>
+                                    </svg>
+                                    Actualiser
+                                </a>
+                            </div>
                             <div class="flex items-center justify-between gap-4 p-2 overflow-x-auto scrollbar-hide">
                                 <!-- Taches (Linked to Taches) -->
                                 <a href="taches.html"
@@ -1379,6 +1404,33 @@
                 counterElement.textContent = Math.round(currentScore);
             }, interval);
         });
+    </script>
+    <script>
+        function refreshBlock(blockId) {
+            const block = document.getElementById(blockId);
+            if (!block) return;
+
+            // Ensure block is relative for absolute child
+            if (getComputedStyle(block).position === 'static') {
+                block.style.position = 'relative';
+            }
+
+            // Create loader
+            const loader = document.createElement('div');
+            loader.className = 'absolute inset-0 bg-white/50 z-50 flex items-center justify-center rounded-xl backdrop-blur-[1px]';
+            loader.innerHTML = `
+                <svg class="animate-spin h-8 w-8 text-saham-red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            `;
+
+            block.appendChild(loader);
+
+            setTimeout(() => {
+                loader.remove();
+            }, 1000);
+        }
     </script>
 </body>
 
